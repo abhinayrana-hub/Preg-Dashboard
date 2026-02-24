@@ -30,8 +30,9 @@ import {
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-const DATA_XLSX = "/data/pregnancy-data.xlsx";
-const DATA_JSON = "/data/pregnancy-data.json";
+const BASE_URL = import.meta.env.BASE_URL || "/";
+const DATA_XLSX = `${BASE_URL}data/pregnancy-data.xlsx`;
+const DATA_JSON = `${BASE_URL}data/pregnancy-data.json`;
 const STORAGE_KEY = "pregnancy-planner-settings";
 const startDate = "2025-10-20";
 const asOfDate = "2026-02-24";

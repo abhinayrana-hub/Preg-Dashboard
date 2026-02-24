@@ -35,7 +35,6 @@ const DATA_XLSX = `${BASE_URL}data/pregnancy-data.xlsx`;
 const DATA_JSON = `${BASE_URL}data/pregnancy-data.json`;
 const STORAGE_KEY = "pregnancy-planner-settings";
 const startDate = "2025-10-20";
-const asOfDate = "2026-02-24";
 
 const defaultSettings = {
   owner: "",
@@ -280,7 +279,7 @@ function App() {
 
   const pregnancyProgress = useMemo(() => {
     const lmpDate = parseISO(startDate);
-    const today = asOfDate ? parseISO(asOfDate) : new Date();
+    const today = new Date();
     const dayDelta = differenceInCalendarDays(today, lmpDate);
     const weekNumber = dayDelta >= 0 ? Math.floor(dayDelta / 7) : 0;
     const dayOfWeek = dayDelta >= 0 ? dayDelta % 7 : 0;
@@ -305,7 +304,6 @@ function App() {
       weekStart,
       weekEnd,
       todayKey: format(today, "yyyy-MM-dd"),
-      asOfLabel: format(today, "MMM d, yyyy"),
     };
   }, []);
 
@@ -441,10 +439,6 @@ function App() {
             <Chip
               label={`Pregnancy month: ${pregnancyProgress.pregnancyMonth}`}
               sx={{ bgcolor: "white", border: "1px solid rgba(126,140,255,0.4)" }}
-            />
-            <Chip
-              label={`As of: ${pregnancyProgress.asOfLabel}`}
-              sx={{ bgcolor: "white", border: "1px solid rgba(95,157,255,0.2)" }}
             />
           </Stack>
         </Box>
